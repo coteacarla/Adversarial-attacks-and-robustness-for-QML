@@ -1,0 +1,4 @@
+*
+!.gitignore
+!PennyLane-version.ipynb
+!Qiskit-version.ipynb
