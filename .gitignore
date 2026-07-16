@@ -2,3 +2,5 @@
 !.gitignore
 !PennyLane-version.ipynb
 !Qiskit-version.ipynb
+!qiskit_reuploading_classifier_after_attack.pth
+!qiskit_reuploading_classifier.pth
