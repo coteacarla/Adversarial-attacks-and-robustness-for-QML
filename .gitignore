@@ -1,9 +1,9 @@
 *
 !.gitignore
-!PennyLane-version.ipynb
-!Qiskit-version.ipynb
+!Model_with_noise.ipynb
+!Model_without_noise.ipynb
 !qiskit_reuploading_classifier_after_attack.pth
 !qiskit_reuploading_classifier.pth
-!notite
+!notite.txt
 !qiskit_reuploading_classifier_after_attack_with_noise.pth
 !qiskit_reuploading_classifier_with_noise.pth
