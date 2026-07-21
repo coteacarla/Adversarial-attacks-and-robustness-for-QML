@@ -12,7 +12,6 @@ Accuracy before PGD Attack: 0.9800 layers=8 lr=0.05
 Accuracy after PGD Attack: 0.5600 epsilon=0.05
 Accuracy after PGD Attack with data augumentation: 0.6400 epsilon=0.05 10% training set
 Accuracy after PGD Attack with data augumentation: 0.5600 epsilon=0.05 25% training set
-Simulated Mitigated Accuracy:0.9000
-
+Simulated Mitigated Accuracy:0.7000
 -----------------------------------------------------------------------------
 
