@@ -12,4 +12,9 @@ Accuracy after PGD Attack: 0.6800 epsilon=0.05
 Simulated Mitigated Accuracy after PGD Attack:0.7000
 Accuracy after PGD Attack with data augmentation: 0.6600 epsilon=0.05 10% training set
 -----------------------------------------------------------------------------
-
+PSR+ibm_berlin
+Accuracy before PGD Attack: 0.8800
+Accuracy AFTER PGD Attack: 0.3600
+Accuracy AFTER PGD Attack data augmentation 25%: 0.8200
+Mitiq ZNE 
+Simulated Mitigated Accuracy: 0.8600
