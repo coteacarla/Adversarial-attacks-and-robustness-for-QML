@@ -92,3 +92,16 @@ tensor(0.0950)
 tensor(0.0858)
 0.09500000000000001
 Accuracy AFTER PGD Attack: 0.0200"""
+---------------------------------------------------------------------------------------------------------------------
+
+
+16*16 (256) images -> strat liniar -> 72 features -> [-pi,pi] -> angle encoding in ansatz -> TRAINING 3 EPOCHS
+noise -> ibm_berlin                                 noiseless
+acc 98% before Attack                               100%
+acc 82% after Attack epsi=0.05                      80%
+acc 92% after Attack epsi=0.05 ZNE                  96%
+RETRAINING 3 EPOCHS +25%
+dataset acc 100%                                    100%
+Attack samples acc 90% epsi=0.05                    
+new Attack on the retrained model 50%
+I use PGD for attacks
