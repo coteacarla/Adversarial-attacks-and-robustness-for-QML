@@ -144,14 +144,8 @@ custom class — they're configured directly via Qiskit Runtime's
 
 ## 5. Notable differences between the two notebooks
 
-- **Estimator used for training**: noiseless notebook uses an exact
-  statevector-based `Estimator`; the noisy notebook uses a density-matrix
-  simulator seeded from a live snapshot of IBM's `ibm_aachen` device
-  (`AerSimulator.from_backend(...)`), so the *training itself* already sees
-  hardware-realistic noise in that notebook.
 - **`MitiqPECEstimatorV2`** (Probabilistic Error Cancellation) only appears
-  in `Model_with_noise.ipynb` — it doesn't make sense to "cancel noise" in
-  a noiseless simulation.
+  in `Model_with_noise.ipynb`
 - **`MitiqCDREstimatorV2` is implemented twice, differently**:
   - *With-noise notebook*: accepts pre-built `noisy_estimator` /
     `ideal_estimator` objects, and generates near-Clifford training
@@ -181,23 +175,6 @@ custom class — they're configured directly via Qiskit Runtime's
   (`QiskitRuntimeService.save_account(...)`), these cells will fail. By
   default `USE_REAL_HARDWARE` is `False`, so most of the notebook runs
   against a *local* noisy simulator instead.
-- **Sequential, stateful execution.** Cells are not independent scripts —
-  many reuse module-level variables set by earlier cells (`qml_model`,
-  `checkpoint`, `feats_test`/`labels_test`,
-  `perturbed_feats_test`, `device`, etc.). Running cells out of order, or
-  restarting the kernel partway through, will raise `NameError`s. A few
-  cells are explicitly commented "training skipped" / "if training is
-  skipped" to mark points where you can resume from a saved checkpoint
-  instead of retraining from scratch.
-- **`_SynchronousJob` is redefined across cells in the with-noise
-  notebook**, and one cell relies on an *earlier* cell's definition still
-  being in scope: the PEC estimator's `run()` method calls
-  `_SynchronousJob(...)` but does not define its own copy of that class —
-  it depends on the ZNE estimator cell (which does define it) having
-  already executed earlier in the same session. This is a pre-existing
-  structural quirk of the original notebook, left unchanged to avoid
-  altering behavior; just be sure to run the ZNE mitigation cell before the
-  PEC mitigation cell.
 - **Small, fixed data subsets.** Training uses only 200 images and
   evaluation only 50 (further sub-sampled to 50 or fewer in several
   mitigation cells), which keeps circuit-execution costs manageable but
@@ -213,11 +190,6 @@ custom class — they're configured directly via Qiskit Runtime's
   queueing, calibration drift, and hardware noise vary over time. The
   stored notebook outputs reflect one particular run and are provided for
   reference only.
-- **A handful of cells are intentionally commented out** (e.g. an epsilon
-  sweep over the PGD attack, a manual `sxdg`-vs-`sx`+`x` equivalence check,
-  an alternative ZNE-via-Runtime-native-resilience attack path, and an
-  early hand-written CDR predictor) — these are exploratory/debugging code
-  left in place for reference and are not part of the main execution path.
 
 ---
 
