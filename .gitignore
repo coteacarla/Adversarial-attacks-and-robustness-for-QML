@@ -5,5 +5,6 @@
 !qiskit_reuploading_classifier_after_attack.pth
 !qiskit_reuploading_classifier.pth
 !notite.txt
-!qiskit_reuploading_classifier_after_attack_with_noise.pth
-!qiskit_reuploading_classifier_with_noise.pth
+!qiskit_reuploading_classifier_after_attack_with_noise_psr.pth
+!qiskit_reuploading_classifier_with_noise_psr.pth
+!README.md
