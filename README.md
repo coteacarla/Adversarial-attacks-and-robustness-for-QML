@@ -89,8 +89,7 @@ Both notebooks define an (almost) identical PyTorch module:
   angles for the default 8-qubit, 2-layer configuration).
 - **Data re-uploading**: those raw angles are affine-transformed by
   learnable per-angle `weights`/`bias` parameters before being bound into
-  the quantum circuit — this "re-uploading" of classical data through
-  learnable scale/shift is what gives the model architecture its name.
+  the quantum circuit
 - **Quantum circuit**: a "strongly entangling" ansatz (mirroring
   PennyLane's `StronglyEntanglingLayers` template) built from
   `RZ-RY-RZ` rotation blocks per qubit per layer, interleaved with rings of
