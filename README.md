@@ -87,9 +87,6 @@ Both notebooks define an (almost) identical PyTorch module:
   (`input_projection`) maps the 256 input features onto
   `num_layers * num_qubits * 3` rotation angles (default: `2 * 8 * 3 = 48`
   angles for the default 8-qubit, 2-layer configuration).
-- **Data re-uploading**: those raw angles are affine-transformed by
-  learnable per-angle `weights`/`bias` parameters before being bound into
-  the quantum circuit
 - **Quantum circuit**: a "strongly entangling" ansatz (mirroring
   PennyLane's `StronglyEntanglingLayers` template) built from
   `RZ-RY-RZ` rotation blocks per qubit per layer, interleaved with rings of
@@ -146,19 +143,6 @@ custom class — they're configured directly via Qiskit Runtime's
 
 - **`MitiqPECEstimatorV2`** (Probabilistic Error Cancellation) only appears
   in `Model_with_noise.ipynb`
-- **`MitiqCDREstimatorV2` is implemented twice, differently**:
-  - *With-noise notebook*: accepts pre-built `noisy_estimator` /
-    `ideal_estimator` objects, and generates near-Clifford training
-    circuits by replacing **parameterized rotation gates** (`rx`, `ry`,
-    `rz`, `p`) with the nearest Clifford *angle* (0, π/2, π, 3π/2).
-  - *Without-noise notebook*: builds its own `BackendEstimatorV2`
-    instances internally from `backend`/`ideal_backend` arguments, and
-    generates training circuits by replacing **fixed Clifford gates**
-    (`x`, `y`, `z`, `h`, `s`, `sdg`) with native-basis equivalents.
-
-  These are independent implementations with different constructor
-  signatures — code written against one is *not* a drop-in replacement for
-  the other.
 - Saved checkpoint filenames differ (`..._with_noise_psr.pth` vs. no
   suffix) so the two notebooks' artifacts don't collide if run in the same
   working directory.
