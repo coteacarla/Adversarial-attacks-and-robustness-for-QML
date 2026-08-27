@@ -67,9 +67,7 @@ Both notebooks follow the same high-level pipeline, cell by cell:
    - **CDR** (Clifford Data Regression) via a custom
      `MitiqCDREstimatorV2`, which fits a linear noisy-to-ideal correction
      from near-Clifford training circuits and applies it to the target
-     circuit's expectation value. The with-noise and without-noise
-     notebooks use two different (independently written) implementations
-     of this class — see [Section 5](#5-notable-differences-between-the-two-notebooks).
+     circuit's expectation value. 
 
 Cells are meant to be run top-to-bottom in a single kernel session; several
 cells reuse module-level globals (`qml_model`, `checkpoint`, `feats_test`,
